@@ -8,8 +8,6 @@ RUN apt-get update && \
 		perl=5.26.1-6ubuntu0.3 \
 		hmmer=3.1b2+dfsg-5ubuntu1 
 
-#RUN apt-get install -y libhts2=1.7-2
-
 #Set language
 ENV LANGUAGE en_US.UTF-8
 ENV LC_ALL en_US.UTF-8 
@@ -25,6 +23,6 @@ RUN wget -O bedtools https://github.com/arq5x/bedtools2/releases/download/v2.29.
 WORKDIR /usr/src
 RUN git clone https://github.com/tseemann/barrnap.git && \
 	cd barrnap && \
-	git checkout 0.9 && \
-	ln -s $(pwd)/bin/barrnap /usr/bin/
+	git checkout 0.9 
 
+ENV PATH="/usr/src/barrnap/bin:$PATH"
